@@ -16,8 +16,9 @@ public class RunTest {
     WebDriver driver;
     @Before
     public void setup(){
-        System.setProperty("webdriver.chrome.driver", "D:\\Job\\Testing\\chromedriver\\chromedriver.exe");
 //        System.setProperty("webdriver.gecko.driver", "D:\\Job\\Testing\\geckodriver\\geckodriver.exe");
+//        driver = new FirefoxDriver();
+        System.setProperty("webdriver.chrome.driver", "D:\\Job\\Testing\\chromedriver\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
@@ -37,6 +38,7 @@ public class RunTest {
         HabrPage habr = new HabrPage(driver);
         Assert.assertEquals("Хабрахабр", results.getTextToAssert());
         habr.clickAllTopicsLink();
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//ul[@id=\"nav-pages\"]//a[.=\"2\"]")));
         habr.clickSecondPage();
     }
 }
