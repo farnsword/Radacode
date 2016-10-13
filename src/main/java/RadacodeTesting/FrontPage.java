@@ -17,7 +17,6 @@ public class FrontPage {
     }
 
     public FrontPage(WebDriver driver){
-        this.driver = driver;
         driver.get(URL_ADRESS);
         PageFactory.initElements(driver, this);
     }
